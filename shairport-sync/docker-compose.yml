@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  outdoor_speakers:
+    image: mikebrady/shairport-sync:rolling
+    container_name: outdoor_speakers
+    network_mode: host
+    restart: unless-stopped
+    devices:
+      - "/dev/snd" # ALSA device
+    volumes:
+      - /home/justin/shairport-sync/shairport-sync.conf:/etc/shairport-sync.conf
+    logging:
+      options:
+        max-size: "200k"
+        max-file: "10"
+

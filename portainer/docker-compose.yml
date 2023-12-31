@@ -1,0 +1,31 @@
+version: '3.8'
+
+networks:
+  portainer:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.1.0.0/24
+
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    hostname: portainer
+    environment:
+      - TZ=America/New_York
+    ports:
+      # - "8000:8000" # Optional - only required for use with Edge agents.
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    restart: always
+    dns: 127.0.0.1
+    networks:
+      portainer:
+        ipv4_address: 10.1.0.100
+
+volumes:
+  portainer_data:
+
