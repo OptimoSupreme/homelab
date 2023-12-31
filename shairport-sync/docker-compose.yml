@@ -9,7 +9,7 @@ services:
     devices:
       - "/dev/snd" # ALSA device
     volumes:
-      - /srv/shairport-sync/shairport-sync.conf:/etc/shairport-sync.conf
+      - /srv/homelab/shairport-sync/shairport-sync.conf:/etc/shairport-sync.conf
     logging:
       options:
         max-size: "200k"

@@ -26,8 +26,8 @@ services:
     container_name: pihole
     hostname: pihole
     volumes:
-      - /srv/wirehole/pihole/etc-pihole:/etc/pihole
-      - /srv/wirehole/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+      - /srv/homelab/wirehole/pihole/etc-pihole:/etc/pihole
+      - /srv/homelab/wirehole/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
     networks:
       private_network:
         ipv4_address: 10.2.0.11
