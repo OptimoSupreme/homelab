@@ -5,7 +5,7 @@ services:
     image: mikebrady/shairport-sync:latest
     container_name: shairport-sync
     network_mode: host
-    restart: unless-stopped
+    restart: on-failure:5
     devices:
       - "/dev/snd" # ALSA device
     volumes:

@@ -20,7 +20,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
-    restart: always
+    restart: on-failure:5
     dns: 127.0.0.1
     networks:
       portainer:
