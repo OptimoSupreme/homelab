@@ -1,6 +1,4 @@
-# Homelab Configuration
-
-This repository contains Docker Compose configurations and associated files for various services running in my homelab.
+# Homelab Services
 
 ## Directories
 - [Home Assistant](https://github.com/OptimoSupreme/homelab/tree/main/home_assistant): Home automation [platform](https://www.home-assistant.io/).
@@ -11,9 +9,7 @@ This repository contains Docker Compose configurations and associated files for 
 - [Wirehole](https://github.com/OptimoSupreme/homelab/tree/main/wirehole): Consolidated setup for WireGuard VPN, Pi-hole ad blocking, and Unbound DNS resolver. Forked from [10h30/wirehole-ui](https://github.com/10h30/wirehole-ui).
 
 ## Additional Information
-
-Each directory contains Docker Compose files and any necessary configuration files. Feel free to browse, fork, or adapt for your own homelab setup.
+This repository contains Docker Compose configurations and associated files for various services running in my homelab. To use these compose files as is, this repo should be cloned into `/srv`. Feel free to browse, fork, or adapt for your own homelab setup.
 
 ## Contributing
-
 Contributions are welcome! If you have any suggestions or improvements, please submit a pull request.
