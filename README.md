@@ -3,7 +3,7 @@
 This repository contains Docker Compose configurations and associated files for various services running in my homelab.
 Services
 
-- [Portainer](https://github.com/OptimoSupreme/homelab/tree/main/portainer): https://github.com/portainer/portainer: Web-based UI for managing Docker containers and services.
+- [Portainer](https://github.com/OptimoSupreme/homelab/tree/main/portainer): Web-based UI for managing Docker containers and services.
 - [Questionable.zip](https://github.com/OptimoSupreme/homelab/tree/main/questionable.zip): Personal website.
 - [Shairport-Sync](https://github.com/OptimoSupreme/homelab/tree/main/shairport-sync): Allows AirPlay streaming to Raspberry Pi.
 - [Watchtower](https://github.com/OptimoSupreme/homelab/tree/main/watchtower): Monitors Docker images for updates and applies them as configured (updates all local containers by default).
