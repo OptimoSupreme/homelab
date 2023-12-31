@@ -3,7 +3,7 @@ version: '3'
 services:
   outdoor_speakers:
     image: mikebrady/shairport-sync:latest
-    container_name: airplay_name # Choose a name that will show up on your airplay devices list.
+    container_name: shairport-sync
     network_mode: host
     restart: unless-stopped
     devices:
