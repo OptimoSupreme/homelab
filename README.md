@@ -3,6 +3,7 @@
 This repository contains Docker Compose configurations and associated files for various services running in my homelab.
 
 ## Directories
+- [Home Assistant](https://github.com/OptimoSupreme/homelab/tree/main/home_assistant): Home automation [platform](https://www.home-assistant.io/).
 - [Portainer](https://github.com/OptimoSupreme/homelab/tree/main/portainer): Web-based UI for managing Docker containers and services.
 - [Questionable.zip](https://github.com/OptimoSupreme/homelab/tree/main/questionable.zip): Personal website.
 - [Shairport-Sync](https://github.com/OptimoSupreme/homelab/tree/main/shairport-sync): Allows AirPlay streaming to Raspberry Pi.
