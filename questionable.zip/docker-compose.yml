@@ -1,28 +1,24 @@
 ---
 version: "2.1"
+
 services:
-  swag:
+  questionable.zip:
     image: lscr.io/linuxserver/swag
-    container_name: swag
+    container_name: questionable.zip
     cap_add:
       - NET_ADMIN
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
-      - URL=yourdomain.url
-      - SUBDOMAINS=www,
+      - TZ=America/New_York
+      - URL=questionable.zip
+      - SUBDOMAINS=www
       - VALIDATION=http
-      - CERTPROVIDER= #optional
-      - DNSPLUGIN=cloudflare #optional
-      - DUCKDNSTOKEN=<token> #optional
-      - EMAIL=<e-mail> #optional
-      - ONLY_SUBDOMAINS=false #optional
-      - EXTRA_DOMAINS=<extradomains> #optional
-      - STAGING=false #optional
+      - CERTPROVIDER= zerossl
+      - EMAIL=jward92@gmail.com
     volumes:
-      - </path/to/appdata/config>:/config
+      - /srv/questionable.zip:/config
     ports:
       - 443:443
-      - 80:80 #optional
-    restart: unless-stopped
+      - 80:80
+    restart: on-failure:5
