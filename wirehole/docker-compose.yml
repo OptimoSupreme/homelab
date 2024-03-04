@@ -59,7 +59,7 @@ services:
     container_name: wg-easy
     hostname: wg-easy
     volumes:
-      - /srv/wirehole/wg-easy:/etc/wireguard \
+      - /srv/wirehole/wg-easy:/etc/wireguard
     networks:
       private_network:
         ipv4_address: 10.2.0.12
