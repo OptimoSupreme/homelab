@@ -2,16 +2,21 @@ version: '3'
 
 services:
   shairport-sync:
-    image: mikebrady/shairport-sync:latest
+    image: docker.io/mikebrady/shairport-sync:latest
     container_name: shairport-sync
     network_mode: host
-    restart: on-failure:5
     devices:
       - "/dev/snd" # ALSA device
     volumes:
-      - /srv/shairport-sync/shairport-sync.conf:/etc/shairport-sync.conf
+      - ./shairport-sync.conf:/etc/shairport-sync.conf:z
     logging:
       options:
         max-size: "200k"
         max-file: "10"
-
+    deploy:
+      resources:
+        limits:
+          memory: 100M
+    restart: always
+    labels:
+      io.containers.autoupdate: "registry"

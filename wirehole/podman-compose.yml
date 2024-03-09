@@ -9,7 +9,7 @@ networks:
 
 services:
   unbound:
-    image: klutchell/unbound:latest
+    image: docker.io/klutchell/unbound:latest
     container_name: unbound
     hostname: unbound
     networks:
@@ -18,16 +18,18 @@ services:
     deploy:
       resources:
         limits:
-          memory: 200M
-    restart: on-failure:5
+          memory: 100M
+    restart: always
+    labels:
+      io.containers.autoupdate: "registry"
 
   pihole:
-    image: pihole/pihole:latest
+    image: docker.io/pihole/pihole:latest
     container_name: pihole
     hostname: pihole
     volumes:
-      - /srv/wirehole/pihole/etc-pihole:/etc/pihole
-      - /srv/wirehole/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+      - ./pihole/etc-pihole:/etc/pihole:z
+      - ./pihole/etc-dnsmasq.d:/etc/dnsmasq.d:z
     networks:
       private_network:
         ipv4_address: 10.2.0.11
@@ -43,15 +45,18 @@ services:
       - 10.2.0.10  # Points to unbound
     environment:
       TZ: America/New_York
-      WEBPASSWORD: yourpassword  # ⚠️ Set a password for pihole here.
       ServerIP: 10.2.0.100  # Internal IP of pihole
       DNS1: 10.2.0.10  # Unbound IP
       DNS2: 10.2.0.10  # If we don't specify two, it will auto pick google.
+    env_file:
+      - ./pihole.env
     deploy:
       resources:
         limits:
-          memory: 300M
-    restart: on-failure:5
+          memory: 250M
+    restart: always
+    labels:
+      io.containers.autoupdate: "registry"
     depends_on: [unbound]
 
   wg-easy:
@@ -59,7 +64,7 @@ services:
     container_name: wg-easy
     hostname: wg-easy
     volumes:
-      - /srv/wirehole/wg-easy:/etc/wireguard
+      - ./wg-easy:/etc/wireguard:z
     networks:
       private_network:
         ipv4_address: 10.2.0.12
@@ -70,22 +75,23 @@ services:
       - 10.2.0.11  # Points to pihole
       - 10.2.0.10  # Points to unbound
     environment:
-      WG_HOST: vpn.yoururl.com  # ⚠️ Change this to your host's public address or url.
-      PASSWORD: yourpassword  # ⚠️ Set a password for wg-easy here.
       WG_PORT: 51820
       WG_PERSISTENT_KEEPALIVE: 25
       WG_DEFAULT_ADDRESS: 10.64.0.x
       WG_DEFAULT_DNS: 10.2.0.11
-    deploy:
-      resources:
-        limits:
-          memory: 200M
+    env_file:
+      - ./wg-easy.env
     cap_add:
       - NET_ADMIN
+      - NET_RAW
       - SYS_MODULE
     sysctls:
       - net.ipv4.ip_forward=1
       - net.ipv4.conf.all.src_valid_mark=1
-    restart: on-failure:5
+    deploy:
+      resources:
+        limits:
+          memory: 200M
+    restart: always
     depends_on: [unbound, pihole]
 

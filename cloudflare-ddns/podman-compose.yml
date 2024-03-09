@@ -1,10 +1,9 @@
 version: "3"
 services:
   cloudflare-ddns:
-    image: favonia/cloudflare-ddns:latest
+    image: docker.io/favonia/cloudflare-ddns:latest
     container_name: cloudflare-ddns
     network_mode: host
-    restart: always
     cap_add:
       - SETUID
       - SETGID
@@ -16,5 +15,14 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - CF_API_TOKEN=cloudflareapitoken
-      - DOMAINS=your.awesome.domain
+    env_file:
+      - ./cloudflare-ddns.env
+    deploy:
+      resources:
+        limits:
+          memory: 100M
+    restart: always
+    labels:
+      io.containers.autoupdate: "registry"
+
+      
