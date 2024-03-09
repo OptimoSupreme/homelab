@@ -18,7 +18,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 100M
+          memory: 150M
     restart: always
     labels:
       io.containers.autoupdate: "registry"
@@ -46,8 +46,8 @@ services:
     environment:
       TZ: America/New_York
       ServerIP: 10.2.0.100  # Internal IP of pihole
-      DNS1: 10.2.0.10  # Unbound IP
-      DNS2: 10.2.0.10  # If we don't specify two, it will auto pick google.
+      DNS1: 10.2.0.10       # Unbound IP
+      DNS2: 10.2.0.10       # If we don't specify two, it will auto pick google.
     env_file:
       - ./pihole.env
     deploy:

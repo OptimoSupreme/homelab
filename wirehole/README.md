@@ -15,6 +15,5 @@ sudo systemctl restart systemd-resolved
 ```
 
 ## Additional Notes
-- Be sure to change the noted (look for the `⚠️`) configuration lines.
-- Regularly update your Docker images for security patches, this repo contains my watchtower compose file which will handle these updates for you.
-- I highly recommend the blocklists offered by [oisd](https://oisd.nl/setup) for pihole.
+- Be sure to change the values in the `.env` files.
+- I recommend the blocklists offered by [oisd](https://oisd.nl/setup) for pihole.
