@@ -34,8 +34,8 @@ services:
       private_network:
         ipv4_address: 10.2.0.11
     ports:
-      - "53:53/tcp"
-      - "53:53/udp"
+      - "5354:53/tcp"
+      - "5354:53/udp"
       - "8080:80/tcp"
 #      - 67:67/udp # Only required if you are using Pi-hole as your DHCP server.
 #    cap_add:
@@ -93,5 +93,5 @@ services:
         limits:
           memory: 200M
     restart: always
-    depends_on: [unbound, pihole]
+    depends_on: [unbound]
 
