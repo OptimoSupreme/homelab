@@ -1,3 +1,1 @@
-### These containers are created with the intention of running via `podman-compose`. 
-
-The compose files in `.docker_archive` are not maintained, but were working via Docker MAR23,
+**The compose files in this branch were created for use with Docker, which I have since replaced with Podman. They are not maintained, but were last known to be working.**
