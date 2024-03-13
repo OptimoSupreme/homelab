@@ -1,1 +1,0 @@
-**The compose files in this branch were created for use with Docker, which I have since replaced with Podman. They are not maintained, but were last known to be working.**
