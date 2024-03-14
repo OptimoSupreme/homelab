@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionable.zip</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000; /* Black initial background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: pulsate 4s infinite alternate; /* Pulsating animation */
+    }
+    
+    @keyframes pulsate {
+      0% {
+        background-color: #2b0048; /* Start with very dark purple */
+      }
+      100% {
+        background-color: #000; /* End with black */
+      }
+    }
+
+    .container {
+      text-align: center;
+    }
+    h1 {
+      font-size: 36px;
+      color: #fff; /* White text color */
+    }
+    p {
+      font-size: 18px;
+      color: #fff; /* White text color */
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #6eff80; /* Traffic light green button */
+      color: #000; /* Black text color */
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 20px;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      background-color: #59d65e; /* Darker green on hover */
+    }
+
+    /* Hidden image initially */
+    .hidden {
+      display: none;
+    }
+
+    /* Spinning and bouncing animation */
+    .spinning-image {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: spin-bounce 1s infinite;
+    }
+
+    @keyframes spin-bounce {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1.2);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(720deg) scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Whoa there!</h1>
+    <p>Looks like you stumbled upon something... questionable.</p>
+    <a href="#" class="btn" onclick="startAnimation()">Proceed anyways?</a>
+  </div>
+
+  <!-- Image that pops up when button is clicked -->
+  <img src="./questionable.png" alt="OOGA BOOGA" class="spinning-image hidden" id="spinningImage">
+
+  <script>
+    function startAnimation() {
+      var image = document.getElementById("spinningImage");
+      image.classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
+
