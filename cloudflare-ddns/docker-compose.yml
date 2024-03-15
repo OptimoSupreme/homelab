@@ -21,4 +21,4 @@ services:
       resources:
         limits:
           memory: 50M
-    restart: always
+    restart: unless-stopped
