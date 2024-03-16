@@ -34,7 +34,7 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-      - "8080:80/tcp"
+      - "8081:80/tcp"
 #      - 67:67/udp # Only required if you are using Pi-hole as your DHCP server.
 #    cap_add:
 #      - NET_ADMIN # Only required if you are using Pi-hole as your DHCP server.
@@ -65,7 +65,7 @@ services:
         ipv4_address: 10.2.0.12
     ports:
       - "51820:51820/udp"
-      - "51821:51821/tcp"
+      - "8082:51821/tcp"
     dns:
       - 10.2.0.11  # Points to pihole
       - 10.2.0.10  # Points to unbound
