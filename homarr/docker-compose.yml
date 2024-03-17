@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./configs:/app/data/configs
+      - ./icons:/app/public/icons
+      - ./data:/data
+    ports:
+      - '8080:7575'
+    deploy:
+      resources:
+        limits:
+          memory: 100M
+    restart: unless-stopped
