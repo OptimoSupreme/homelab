@@ -4,17 +4,12 @@ services:
     image: favonia/cloudflare-ddns:latest
     container_name: cloudflare-ddns
     network_mode: host
-    cap_add:
-      - SETUID
-      - SETGID
+    user: "1000:1000"
     cap_drop:
       - all
     read_only: true
     security_opt:
       - no-new-privileges:true
-    environment:
-      - PUID=1000
-      - PGID=1000
     env_file:
       - ./cloudflare-ddns.env
     deploy:
