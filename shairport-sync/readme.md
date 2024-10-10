@@ -10,10 +10,8 @@ sudo dnf update && sudo dnf install alsa-utils shairport-sync -y
 
 For a multi-instance setup, copy the default config to for each instance:
 ```
-sudo mkdir -p /etc/shairport-sync/dining_room
-sudo mkdir -p /etc/shairport-sync/outdoor_speakers
-sudo cp /etc/shairport-sync.conf /etc/shairport-sync/outdoor_speakers/
-sudo cp /etc/shairport-sync.conf /etc/shairport-sync/dining_room/
+sudo cp /etc/shairport-sync.conf /etc/shairport-sync/outdoor_speakers.conf
+sudo cp /etc/shairport-sync.conf /etc/shairport-sync/dining_room.conf
 ```
 
 Create the two new systemd service files pointing to each config:
