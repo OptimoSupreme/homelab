@@ -1,1 +1,1 @@
-Repo containing the cuatomizations and services I run on my server.
+Repo containing the customizations and services I run on my server.
