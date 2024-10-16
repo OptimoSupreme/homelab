@@ -68,6 +68,7 @@ Gather your sound card and device number with `sudo aplay -l`.
 Edit the config files for each instance. Set the name, if it is a multi instance setup increment the device_is by 1, and set the output device.
 
 ---
+
 This is outside the scope of a normal configuration.
 
 My USB sound cards were not compatible with the sample rate of Airplay, so I resampled them with Alsa, and configured shairport-sync to output to the resampled outputs. This allows shairport-sync to output a sample rate it supports, and for teh sound card to receive a sample rate they support.
