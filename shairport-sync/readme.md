@@ -5,13 +5,13 @@ sudo hostnamectl set-hostname shairport-sync
 
 Update the system and install alsa-utils and shairport-sync:
 ```
-sudo dnf update && sudo dnf install alsa-utils shairport-sync -y
+sudo dnf update -y && sudo dnf install alsa-utils shairport-sync -y
 ```
 
 For a multi-instance setup, copy the default config to for each instance:
 ```
-sudo cp /etc/shairport-sync.conf /etc/shairport-sync/outdoor_speakers.conf
-sudo cp /etc/shairport-sync.conf /etc/shairport-sync/dining_room.conf
+sudo cp /etc/shairport-sync.conf /etc/outdoor_speakers.conf
+sudo cp /etc/shairport-sync.conf /etc/dining_room.conf
 ```
 
 Create the two new systemd service files pointing to each config:
@@ -23,7 +23,7 @@ Description=Shairport Sync AirPlay Receiver - Dining Room
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/shairport-sync -c /etc/shairport-sync/dining_room.conf
+ExecStart=/usr/bin/shairport-sync -c /etc/dining_room.conf
 Restart=always
 User=shairport-sync
 Group=audio
@@ -38,7 +38,7 @@ Description=Shairport Sync AirPlay Receiver - Outdoor Speakers
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/shairport-sync -c /etc/shairport-sync/outdoor_speakers.conf
+ExecStart=/usr/bin/shairport-sync -c /etc/outdoor_speakers.conf
 Restart=always
 User=shairport-sync
 Group=audio
@@ -65,7 +65,12 @@ Adjust the volume levels for your sound cards with `sudo alsamixer` and save the
 
 Gather your sound card and device number with `sudo aplay -l`.
 
-Edit the config files for each instance. Set the name, if it is a multi instance setup increment the device_is by 1, and set the output device.
+Edit the config files for each instance. Set the name, if it is a multi instance setup increment the device_id by 1, and set the output device.
+
+Enable and start the shairport services you created.
+```
+sudo systemctl enable --now outdoor_speakers.service && sudo systemctl enable --now dining_room.service
+```
 
 ---
 
@@ -78,7 +83,7 @@ Create the file `/etc/asound.conf`
 # Resample for the first USB DAC (card 2)
 pcm.usb_dac1 {
     type hw
-    card 2
+    card 0
     device 0
 }
 
@@ -93,7 +98,7 @@ pcm.resampled_dac1 {
 # Resample for the second USB DAC (card 3)
 pcm.usb_dac2 {
     type hw
-    card 3
+    card 2
     device 0
 }
 
