@@ -7,7 +7,8 @@ Environment="PASSWORD_HASH=$$2a$$12$$dQgae3fDHpJ/h.UrwpeHSOJBWXUsXH5nFTQ6bmC1M7Y
 Environment="PORT=8082"
 Environment="WG_PORT=443"
 Environment="WG_PERSISTENT_KEEPALIVE: 25"
-Environment="WG_DNS=127.0.0.1"
+Environment="WG_DEFAULT_ADDRESS: 10.64.0.x"
+Environment="WG_DEFAULT_DNS: 127.0.0.1"
 Volume=/srv/wirehole/wg-easy:/etc/wireguard:Z
 AddCapability=NET_ADMIN
 AddCapability=NET_RAW
