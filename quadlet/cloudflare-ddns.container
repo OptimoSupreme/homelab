@@ -5,8 +5,8 @@ User=1000:1000
 ReadOnly=true
 DropCapability=all
 NoNewPrivileges=true
-Environment="CLOUDFLARE_API_TOKEN=r7yrU_vV8KB07lCyeguQhq9Wif2fmAn-vxsO43uL"
-Environment="DOMAINS=questionable.zip"
+Environment="CLOUDFLARE_API_TOKEN=YOUR_API_TOKEN"
+Environment="DOMAINS=domain.com"
 Environment="RESOLVER_ADDRESS=1.1.1.1:53" # Likely not needed
 AutoUpdate=registry
 

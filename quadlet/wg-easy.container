@@ -2,8 +2,8 @@
 Image=ghcr.io/wg-easy/wg-easy
 Pod=wirehole.pod
 Environment="LANG=en"
-Environment="WG_HOST=questionable.zip"
-Environment="PASSWORD_HASH=$$2a$$12$$dQgae3fDHpJ/h.UrwpeHSOJBWXUsXH5nFTQ6bmC1M7YsJQF.kl2ku"
+Environment="WG_HOST=domain.com"
+Environment="PASSWORD_HASH=password_hash"
 Environment="PORT=8082"
 Environment="WG_PORT=443"
 Environment="WG_PERSISTENT_KEEPALIVE: 25"

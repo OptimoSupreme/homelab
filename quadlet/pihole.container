@@ -2,7 +2,7 @@
 Image=docker.io/pihole/pihole:latest
 Pod=wirehole.pod
 Environment="TZ=America/New_York"
-Environment="WEBPASSWORD=over9000"
+Environment="WEBPASSWORD=your_password"
 Volume=/srv/wirehole/pihole:/etc/pihole:Z
 Volume=/srv/wirehole/pihole/dnsmasq.d:/etc/dnsmasq.d:Z
 AutoUpdate=registry
