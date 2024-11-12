@@ -1,0 +1,14 @@
+[Container]
+Image=docker.io/favonia/cloudflare-ddns:latest
+Network=host
+User=1000:1000
+ReadOnly=true
+DropCapability=all
+NoNewPrivileges=true
+Environment="CLOUDFLARE_API_TOKEN=r7yrU_vV8KB07lCyeguQhq9Wif2fmAn-vxsO43uL"
+Environment="DOMAINS=questionable.zip"
+Environment="RESOLVER_ADDRESS=1.1.1.1:53" # Likely not needed
+AutoUpdate=registry
+
+[Service]
+Restart=always
