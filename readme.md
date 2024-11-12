@@ -1,1 +1,1 @@
-Repo containing the customizations and services I run on my server.
+Repo containing the my server services. Docker stuff is no longer maintained.
