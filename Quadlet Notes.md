@@ -15,7 +15,7 @@ ReadOnly=true
 DropCapability=all
 NoNewPrivileges=true
 Environment="CLOUDFLARE_API_TOKEN=cloudflare_token_here"
-Environment="DOMAINS=questionable.zip"
+Environment="DOMAINS=your.domain.com"
 AutoUpdate=registry # Configures the container to update from the registry automatically when podman-auto-update.timer is running.
 
 [Service]
