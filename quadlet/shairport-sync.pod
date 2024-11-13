@@ -1,0 +1,12 @@
+[Pod]
+Description=Shairport-sync instances for home speakers.
+Network=bridge
+
+PublishPort=319-320/udp
+PublishPort=3689/tcp
+PublishPort=5353/tcp
+PublishPort=5000/tcp
+PublishPort=7000/tcp
+PublishPort=6000-6009/udp
+PublishPort=32768-60999/udp
+PublishPort=32768-60999/tcp

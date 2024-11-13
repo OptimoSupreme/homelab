@@ -1,0 +1,34 @@
+[Unit]
+Description=Outdoor Speakers AirPlay Receiver
+
+[Container]
+Image=docker.io/mikebrady/shairport-sync:latest
+Restart=always
+Network=host
+AddDevice=/dev/snd
+Environment="ALSADEV=resampled_dac1"
+ExecPre=sh -c 'cat > /etc/asound.conf <<EOF
+pcm.usb_dac1 {
+    type hw
+    card 0
+    device 0
+}
+
+pcm.resampled_dac1 {
+    type plug
+    slave {
+        pcm "usb_dac1"
+        rate 48000
+    }
+}
+EOF'
+Exec=shairport-sync -v --statistics -a "Outdoor Speakers" -- -d ${ALSADEV} -c PCM
+
+[Install]
+WantedBy=default.target
+
+---
+
+To do:
+- determine correct hardware
+- Open ports in firewall

@@ -1,3 +1,6 @@
+[Unit]
+Description=wg-easy instance.
+
 [Container]
 Image=ghcr.io/wg-easy/wg-easy
 Pod=wirehole.pod

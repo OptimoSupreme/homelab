@@ -1,4 +1,5 @@
 [Pod]
+Description=Unbound, Pihole, WG-Easy pod for adblocking and VPN server.
 Network=bridge
 
 # pihole ports

@@ -1,3 +1,6 @@
+[Unit]
+Description=Pihole instance.
+
 [Container]
 Image=docker.io/pihole/pihole:latest
 Pod=wirehole.pod

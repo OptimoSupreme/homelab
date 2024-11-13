@@ -1,3 +1,6 @@
+[Unit]
+Description=Dynamic DNS updater.
+
 [Container]
 Image=docker.io/favonia/cloudflare-ddns:latest
 Network=host
