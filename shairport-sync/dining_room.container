@@ -7,8 +7,9 @@ Pod=shairport-sync.pod
 Network=host
 AddDevice=/dev/snd
 AddDevice=/dev/bus/usb/001/002
+Volume=./resample_1.conf:/etc/asound.conf:ro:Z
 Environment="SHAIRPORT_SYNC_DEVICE_ID=1"
-Exec=shairport-sync -v --statistics -a "Outdoor Speakers" -- -d usb_dac2 -c PCM
+Exec=shairport-sync -v --statistics -a "Outdoor Speakers" -- -d usb_dac1 -c PCM
 AutoUpdate=registry
 
 [Service]
