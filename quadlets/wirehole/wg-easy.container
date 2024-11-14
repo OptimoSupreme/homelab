@@ -5,14 +5,13 @@ Description=wg-easy instance.
 Image=ghcr.io/wg-easy/wg-easy
 Pod=wirehole.pod
 Environment="LANG=en"
-Environment="WG_HOST=domain.com"
-Environment="PASSWORD_HASH=password_hash"
 Environment="PORT=8082"
 Environment="WG_PORT=443"
 Environment="WG_PERSISTENT_KEEPALIVE: 25"
 Environment="WG_DEFAULT_ADDRESS: 10.64.0.x"
 Environment="WG_DEFAULT_DNS: 127.0.0.1"
-Volume=/srv/wirehole/wg-easy:/etc/wireguard:Z
+EnvironmentFile=wg-easy.env
+Volume=./wg-easy_data:/etc/wireguard:Z
 AddCapability=NET_ADMIN
 AddCapability=NET_RAW
 AddCapability=SYS_MODULE
