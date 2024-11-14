@@ -1,1 +1,1 @@
-Place this directory in `/srv/`.
+Place this directory in `/etc/containers/`.
