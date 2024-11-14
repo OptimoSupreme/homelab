@@ -5,6 +5,11 @@ Description=Pihole instance.
 Image=docker.io/pihole/pihole:latest
 Pod=wirehole.pod
 Environment="TZ=America/New_York"
+Environment="DNS1=1.1.1.1"
+Environment="DNS2=1.0.0.1"
+Environment="DNS3=2606:4700:4700::1111"
+Environment="DNS4=2606:4700:4700::1001"
+Environment="FTLCONF_REPLY_ADDR4=0.0.0.0"
 EnvironmentFile=pihole.env
 Volume=./pihole_data/pihole:/etc/pihole:Z
 Volume=./pihole_data/dnsmasq.d:/etc/dnsmasq.d:Z
