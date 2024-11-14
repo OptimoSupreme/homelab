@@ -8,7 +8,7 @@ User=1000:1000
 ReadOnly=true
 DropCapability=all
 NoNewPrivileges=true
-EnvironmentFile=.env
+EnvironmentFile=cloudflare-ddns.env
 AutoUpdate=registry
 
 [Service]
