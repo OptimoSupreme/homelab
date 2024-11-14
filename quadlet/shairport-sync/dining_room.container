@@ -8,7 +8,7 @@ Network=host
 AddDevice=/dev/snd
 AddDevice=/dev/bus/usb/001/002
 Environment="SHAIRPORT_SYNC_DEVICE_ID=1"
-Exec=shairport-sync -v --statistics -a "Outdoor Speakers" -- -d hw:0 -c PCM
+Exec=shairport-sync -v --statistics -a "Outdoor Speakers" -- -d usb_dac2 -c PCM
 AutoUpdate=registry
 
 [Service]

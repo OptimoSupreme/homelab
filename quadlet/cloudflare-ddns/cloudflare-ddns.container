@@ -1,9 +1,6 @@
 [Unit]
 Description=Dynamic DNS updater.
 
-[Service]
-EnvironmentFile=/etc/containers/envs/cloudflare-ddns.env
-
 [Container]
 Image=docker.io/favonia/cloudflare-ddns:latest
 Network=host
@@ -11,6 +8,7 @@ User=1000:1000
 ReadOnly=true
 DropCapability=all
 NoNewPrivileges=true
+EnvironmentFile=.env
 AutoUpdate=registry
 
 [Service]

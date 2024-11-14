@@ -1,1 +1,0 @@
-Place this directory in `/etc/containers/`.
