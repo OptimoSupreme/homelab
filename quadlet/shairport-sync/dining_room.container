@@ -1,13 +1,15 @@
 [Unit]
-Description=Outdoor Speakers AirPlay Receiver.
+Description=Dining Room AirPlay Receiver.
 
 [Container]
 Image=docker.io/mikebrady/shairport-sync:latest
+Pod=shairport-sync.pod
 Network=host
 AddDevice=/dev/snd
-AddDevice=/dev/bus/usb/001/003
-Environment="SHAIRPORT_SYNC_DEVICE_ID=2"
+AddDevice=/dev/bus/usb/001/002
+Environment="SHAIRPORT_SYNC_DEVICE_ID=1"
 Exec=shairport-sync -v --statistics -a "Outdoor Speakers" -- -d hw:0 -c PCM
+AutoUpdate=registry
 
 [Service]
 Restart=always

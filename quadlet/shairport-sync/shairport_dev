@@ -1,0 +1,57 @@
+
+[Unit]
+Description=Outdoor Speakers AirPlay Receiver.
+
+[Container]
+Image=docker.io/mikebrady/shairport-sync:latest
+Network=host
+AddDevice=/dev/snd
+AddDevice=/dev/bus/usb/001/003
+Volume=/path/to/host/asound.conf:/etc/asound.conf:ro:Z
+Environment="SHAIRPORT_SYNC_DEVICE_ID=2"
+Exec=shairport-sync -v --statistics -a "Outdoor Speakers" -- -d usb_dac -c PCM
+
+[Service]
+Restart=always
+ExecStartPre=/bin/sh -c 'cat > /etc/asound.conf <<EOF \
+pcm.usb_dac { \
+    type hw \
+    card 1 \
+    device 0 \
+} \
+\
+pcm.resampled_dac1 { \
+    type plug \
+    slave { \
+        pcm "usb_dac" \
+        rate 48000 \
+    } \
+} \
+EOF'
+
+---
+
+To do:
+- determine correct hardware
+
+---
+
+pod:
+
+
+[Unit]
+Description=Shairport-sync instances for home speakers.
+
+[Pod]
+Network=bridge
+
+PublishPort=319-320/udp
+PublishPort=3689/tcp
+PublishPort=5353/tcp
+PublishPort=5000/tcp
+PublishPort=7000/tcp
+PublishPort=6000-6009/udp
+PublishPort=32768-34768/udp
+PublishPort=32768-34768/tcp
+
+^ worked

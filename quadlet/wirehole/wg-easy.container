@@ -19,3 +19,6 @@ AddCapability=SYS_MODULE
 Sysctl=net.ipv4.conf.all.src_valid_mark=1
 Sysctl=net.ipv4.ip_forward=1
 AutoUpdate=registry
+
+[Service]
+Restart=always
