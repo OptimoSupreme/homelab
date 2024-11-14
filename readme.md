@@ -1,1 +1,0 @@
-Repo containing the my server services. Docker stuff is no longer maintained.
