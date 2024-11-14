@@ -6,9 +6,9 @@ Network=bridge
 
 # pihole ports
 PublishPort=8081:80/tcp
-PublishPort=53:53/tcp
-PublishPort=53:53/udp
+PublishPort=5353:53/tcp
+PublishPort=5353:53/udp
 
 # wg-easy ports
 PublishPort=443:443/udp
-PublishPort=8082:8082
+PublishPort=8082:8082/tcp
