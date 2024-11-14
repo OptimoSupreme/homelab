@@ -1,5 +1,7 @@
+[Unit]
+Description=Unbound, pihole, wg-easy stack for adblocking and vpn server.
+
 [Pod]
-Description=Unbound, Pihole, WG-Easy pod for adblocking and VPN server.
 Network=bridge
 
 # pihole ports
