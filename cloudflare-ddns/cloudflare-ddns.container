@@ -8,6 +8,7 @@ User=1000:1000
 ReadOnly=true
 DropCapability=all
 NoNewPrivileges=true
+Environment="IP6_PROVIDER=none"
 EnvironmentFile=cloudflare-ddns.env
 AutoUpdate=registry
 
