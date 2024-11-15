@@ -3,7 +3,8 @@ Description=Pihole instance.
 
 [Container]
 Image=docker.io/pihole/pihole:latest
-network!
+Network=wirehole
+PodmanArgs=--ip 10.40.0.2
 PublishPort=8081:80/tcp
 PublishPort=53:53/tcp
 PublishPort=53:53/udp
