@@ -27,6 +27,6 @@ Notes:
 - You should use the fqdn for containers, or configure podman to allow shortened names.
 - `AutoUpdate=registry` will cause the container to be automatically updated when the `podman-auto-update.timer` is enabled.
 - `Restart=always` in addaition to restarting the container when a failure occurs, will start the container at system boot automatically.
-- When referencing a pod or network in a .container, you must include the .network extension. For example `Pod=cloudflare-ddns.pod` and `Network=cloudflare-ddns.network`.
+- When referencing a pod or network in a .container, you must include the .pod and .network extensions. For example `Pod=cloudflare-ddns.pod` and `Network=cloudflare-ddns.network`.
 
 ---
