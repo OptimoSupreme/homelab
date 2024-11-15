@@ -11,7 +11,8 @@ Environment="LANG=en"
 Environment="PORT=8082"
 Environment="WG_PORT=443"
 Environment="WG_PERSISTENT_KEEPALIVE=25"
-Environment="WG_DEFAULT_ADDRESS=10.64.0.x"
+Environment="WG_DEFAULT_DNS=10.40.0.2"
+Environment="WG_DEFAULT_ADDRESS=10.41.0.x"
 EnvironmentFile=wg-easy.env
 Volume=./wg-easy_data:/etc/wireguard:Z
 AddCapability=NET_ADMIN
