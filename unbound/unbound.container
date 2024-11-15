@@ -2,7 +2,7 @@
 Description=Unbound DNS
 
 [Container]
-Image=klutchell/unbound
+Image=socker.io/klutchell/unbound:main
 Network=pihole.network
 IP=10.40.0.2
 Name=unbound
