@@ -3,12 +3,13 @@ Description=Pihole instance.
 
 [Container]
 Image=docker.io/pihole/pihole:latest
-Pod=wirehole.pod
+network!
+PublishPort=8081:80/tcp
+PublishPort=53:53/tcp
+PublishPort=53:53/udp
 Environment="TZ=America/New_York"
 Environment="DNS1=1.1.1.1"
 Environment="DNS2=1.0.0.1"
-Environment=PIHOLE_DISABLE_DEFAULT_ADLIST=true
-Environment=PIHOLE_ADLISTS="https://big.oisd.nl"
 Environment="FTLCONF_REPLY_ADDR4=0.0.0.0"
 EnvironmentFile=pihole.env
 Volume=./pihole_data/pihole:/etc/pihole:Z
