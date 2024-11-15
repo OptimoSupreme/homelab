@@ -2,10 +2,9 @@
 Description=Unbound DNS
 
 [Container]
-Image=socker.io/klutchell/unbound:main
+Image=docker.io/klutchell/unbound:main
 Network=pihole.network
 IP=10.40.0.2
-Name=unbound
 AutoUpdate=registry
 
 [Service]
