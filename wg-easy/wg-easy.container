@@ -3,7 +3,7 @@ Description=wg-easy instance.
 
 [Container]
 Image=ghcr.io/wg-easy/wg-easy
-Network=wirehole
+Network=pihole
 PodmanArgs=--ip 10.40.0.3
 PublishPort=8082:8082/tcp
 PublishPort=443:443/udp
