@@ -1,0 +1,12 @@
+[Unit]
+Description=Unbound DNS
+
+[Container]
+Image=klutchell/unbound
+Network=pihole.network
+IP=10.40.0.2
+Name=unbound
+AutoUpdate=registry
+
+[Service]
+Restart=always
