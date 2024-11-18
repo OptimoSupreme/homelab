@@ -1,0 +1,20 @@
+[Unit]
+Description=Satisfactory Server
+
+[Container]
+Image=docker.io/wolveix/satisfactory-server:latest
+PublishPort=7777:7777/udp
+PublishPort=7777:7777/tcp
+Environment="MAXPLAYERS=4"
+Environment="PGID=995"
+Environment="PUID=999"
+Environment="ROOTLESS=false"
+Environment="STEAMBETA=false"
+Volume=/srv/satisfactory:/config:Z
+StopSignal=SIGINT
+AutoUpdate=registry
+
+[Service]
+MemoryLow=6G
+MemoryMax=12G
+Restart=always
