@@ -12,6 +12,7 @@ PublishPort=53:53/udp
 Environment="TZ=America/New_York"
 Environment="DNS1=10.40.0.2"
 Environment="FTLCONF_REPLY_ADDR4=0.0.0.0"
+Environment=BLOCK_ICLOUD_PR=false
 EnvironmentFile=pihole.env
 Volume=./pihole_data/pihole:/etc/pihole:Z
 Volume=./pihole_data/dnsmasq.d:/etc/dnsmasq.d:Z
