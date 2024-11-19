@@ -1,0 +1,9 @@
+To do: \
+[ ] make slack vm \
+[ ] combine wirehole containers into pod \
+[ ] get shairport-sync working \
+[x] pihole allow icloud private relay \
+
+Future Ideas: \
+[ ] immich container \
+[ ] nextcloud container
