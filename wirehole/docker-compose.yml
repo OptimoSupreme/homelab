@@ -24,8 +24,8 @@ services:
     container_name: pihole
     hostname: pihole
     volumes:
-      - ./etc-pihole:/etc/pihole
-      - ./etc-dnsmasq.d:/etc/dnsmasq.d
+      - /srv/wirehole/pihole/etc-pihole:/etc/pihole
+      - /srv/wirehole/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
     networks:
       private_network:
         ipv4_address: 10.40.0.2
@@ -55,7 +55,7 @@ services:
     container_name: wg-easy
     hostname: wg-easy
     volumes:
-      - ./wg-easy:/etc/wireguard
+      - /srv/wirehole/wg-easy:/etc/wireguard
     networks:
       private_network:
         ipv4_address: 10.40.0.3
