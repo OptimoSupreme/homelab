@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # /etc/update-motd.d/10-system-status
-# don't forget sudo chmod +x /etc/update-motd.d/10-system-status
+# Don't forget: sudo chmod +x /etc/update-motd.d/10-system-status
 
 # Define ANSI color codes
 bold=$(tput bold)
@@ -12,11 +12,11 @@ yellow=$(tput setaf 3)
 # Get the number of CPU cores
 cpu_cores=$(nproc)
 
-# Get the 1-minute load average and remove any trailing commas or extra characters
-load_avg_1min=$(uptime | awk -F'load average:' '{ print $2 }' | awk '{ print $1 }' | tr -d ',')
+# Get the 1-minute load average
+load_avg_1min=$(awk '{print $1}' /proc/loadavg)
 
-# Calculate CPU usage percentage over the last minute
-cpu_usage_1min=$(echo "scale=2; $load_avg_1min / $cpu_cores * 100" | bc)
+# Calculate CPU usage percentage
+cpu_usage_1min=$(awk -v load="$load_avg_1min" -v cores="$cpu_cores" 'BEGIN { printf "%.2f", (load / cores) * 100 }')
 
 # Get terminal width
 term_width=$(tput cols)
