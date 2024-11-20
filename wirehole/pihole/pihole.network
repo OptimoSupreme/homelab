@@ -1,4 +1,0 @@
-[Network]
-Subnet=10.40.0.0/24
-Gateway=10.40.0.1
-DisableDNS=true
