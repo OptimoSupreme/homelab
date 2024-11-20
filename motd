@@ -40,6 +40,18 @@ echo "Swap Usage: $(free -h | grep Swap | awk '{print $3 "/" $2 " used"}')"
 echo "Disk Usage: $(df -h / | grep / | awk '{print $3 " used of " $2}')"
 echo ""
 
+# ZFS status
+echo "${bold}${yellow}ZFS Pool Status:${normal}"
+echo "----------------"
+if command -v zpool &> /dev/null; then
+    zpool status -x | while read -r line; do
+        echo "$line"
+    done
+else
+    echo "ZFS is not installed or not running."
+fi
+echo ""
+
 # Docker container status
 if command -v docker &> /dev/null; then
     echo "${bold}${yellow}Docker Container Status:${normal}"
