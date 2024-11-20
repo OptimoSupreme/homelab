@@ -1,0 +1,7 @@
+To do:
+- 9_to_5 incus container
+- shairport-sync incus container
+- freeloader incus container
+
+Future:
+- get docker containers workin in incus
