@@ -6,8 +6,8 @@
 # Define ANSI color codes
 bold=$(tput bold)
 normal=$(tput sgr0)
-cyan=$(tput setaf 6)
-yellow=$(tput setaf 3)
+red=$(tput setaf 1)      # Approximating Debian red
+orange=$(tput setaf 3)   # Approximating orange
 
 # Get the number of CPU cores
 cpu_cores=$(nproc)
@@ -28,20 +28,33 @@ title="< --- Server Status Report --- >"
 padding=$(( (term_width - ${#title}) / 2 ))
 
 # Display centered and bold colored status report title
-printf "%*s%s%s%s\n" $padding "" "${bold}${cyan}" "$title" "${normal}"
+printf "%*s%s%s%s\n" $padding "" "${bold}${red}" "$title" "${normal}"
 echo ""
 
 # System resource usage
-echo "${bold}${yellow}System Resource Usage:${normal}"
+echo "${bold}${orange}System Resource Usage:${normal}"
 echo "----------------------"
 echo "CPU Load (1 min avg): $cpu_usage_1min%"
 echo "Memory Usage: $(free -h | grep Mem | awk '{print $3 "/" $2 " used"}')"
 echo "Swap Usage: $(free -h | grep Swap | awk '{print $3 "/" $2 " used"}')"
-echo "Disk Usage: $(df -h / | grep / | awk '{print $3 " used of " $2}')"
+
+# Disk usage for root (/)
+disk_usage_root=$(df -h / | awk 'NR==2 {print $3 " used of " $2}')
+
+# Disk usage for ZFS pool (srv_pool)
+if zpool list srv_pool &>/dev/null; then
+    zfs_usage=$(zfs list -o used,avail srv_pool | awk 'NR==2 {print $1 " used of " $2}')
+else
+    zfs_usage="ZFS pool not found or unavailable."
+fi
+
+# Align the colons
+printf "%-15s %s\n" "/ Usage:" "$disk_usage_root"
+printf "%-15s %s\n" "srv_pool Usage:" "$zfs_usage"
 echo ""
 
 # ZFS status
-echo "${bold}${yellow}ZFS Pool Status:${normal}"
+echo "${bold}${orange}ZFS Pool Status:${normal}"
 echo "----------------"
 if command -v zpool &> /dev/null; then
     zpool status -x | while read -r line; do
@@ -52,22 +65,59 @@ else
 fi
 echo ""
 
+# Security updates status
+echo "${bold}${orange}Security Updates Status:${normal}"
+echo "------------------------"
+
+# Check the log for unattended-upgrades activity
+log_file="/var/log/unattended-upgrades/unattended-upgrades.log"
+
+if [ -f "$log_file" ]; then
+    # Get the last time unattended-upgrades ran
+    last_run=$(grep -i "unattended-upgrades" "$log_file" | tail -n1 | awk '{print $1, $2}')
+    
+    if [ -z "$last_run" ]; then
+        echo "Unattended-upgrades log found, but no recent runs detected."
+    else
+        echo "Last unattended-upgrades run: $last_run"
+    fi
+
+    # Check for installed updates
+    updates_installed=$(grep -i "Packages were upgraded" "$log_file" | tail -n1)
+    if [ -n "$updates_installed" ]; then
+        echo "Updates installed during last run."
+    else
+        echo "No updates installed during last run."
+    fi
+
+    # Check for errors
+    errors=$(grep -i "error" "$log_file" | tail -n1)
+    if [ -n "$errors" ]; then
+        echo "There was a problem during the last unattended-upgrades run: $errors"
+    else
+        echo "No problems detected during the last run."
+    fi
+else
+    echo "Unattended-upgrades log not found. Is unattended-upgrades installed and enabled?"
+fi
+echo ""
+
 # Docker container status
 if command -v docker &> /dev/null; then
-    echo "${bold}${yellow}Docker Container Status:${normal}"
+    echo "${bold}${orange}Docker Container Status:${normal}"
     echo "------------------------"
     docker ps --format "table {{.Names}}\t{{.Status}}"
 else
-    echo "${bold}${yellow}Docker is not installed or not running.${normal}"
+    echo "${bold}${orange}Docker is not installed or not running.${normal}"
 fi
 
 echo ""
 
 # Incus container status
 if command -v incus &> /dev/null; then
-    echo "${bold}${yellow}Incus Container Status:${normal}"
+    echo "${bold}${orange}Incus Container Status:${normal}"
     echo "-----------------------"
     incus list --format=table | awk 'NR==1 {print} NR>1 {print}'
 else
-    echo "${bold}${yellow}Incus is not installed or not running.${normal}"
+    echo "${bold}${orange}Incus is not installed or not running.${normal}"
 fi
