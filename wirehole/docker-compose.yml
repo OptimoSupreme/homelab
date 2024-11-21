@@ -30,14 +30,14 @@ services:
       private_network:
         ipv4_address: 10.40.0.3
     ports:
-      - "53:53/tcp"
-      - "53:53/udp"
+      - "10.0.0.45:53:53/tcp"
+      - "10.0.0.45:53:53/udp"
       - "8081:80/tcp"
 #      - 67:67/udp # Only required if you are using Pi-hole as your DHCP server.
 #    cap_add:
 #      - NET_ADMIN # Only required if you are using Pi-hole as your DHCP server.
     dns:
-      - 10.40.0.1  # Points to unbound
+      - 10.40.0.2  # Points to unbound
     environment:
       ServerIP: 10.40.0.3  # Internal IP of pihole
       DNS1: 10.40.0.2  # Unbound IP
