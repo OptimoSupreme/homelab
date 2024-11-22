@@ -7,12 +7,11 @@ Network=pihole.network
 IP=10.40.0.3
 DNS=10.40.0.3
 PublishPort=8081:80/tcp
-PublishPort=53:53/tcp
-PublishPort=53:53/udp
+PublishPort=10.0.0.45:53:53/tcp
+PublishPort=10.0.0.45:53:53/udp
 Environment="TZ=America/New_York"
-Environment="DNS1=10.40.0.2"
 Environment="FTLCONF_REPLY_ADDR4=0.0.0.0"
-Environment=BLOCK_ICLOUD_PR=false
+Environment=PIHOLE_DNS_=10.40.0.2
 EnvironmentFile=pihole.env
 Volume=./pihole_data/pihole:/etc/pihole:Z
 Volume=./pihole_data/dnsmasq.d:/etc/dnsmasq.d:Z
