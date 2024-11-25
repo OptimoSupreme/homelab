@@ -3,12 +3,8 @@ Description=Unbound DNS
 
 [Container]
 Image=docker.io/klutchell/unbound:main
-Network=pihole.network
-IP=10.40.0.2
+Pod=wirehole.pod
 AutoUpdate=registry
 
 [Service]
 Restart=always
-
-[Install]
-WantedBy=multi-user.target
