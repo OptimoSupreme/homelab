@@ -4,7 +4,7 @@ Description=wg-easy instance.
 [Container]
 Image=ghcr.io/wg-easy/wg-easy
 Pod=wirehole.pod
-DNS=10.0.0.45
+DNS=127.0.0.1
 Environment="LANG=en"
 Environment="PORT=8082"
 Environment="WG_PORT=443"
