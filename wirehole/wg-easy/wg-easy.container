@@ -14,7 +14,7 @@ Environment="WG_PERSISTENT_KEEPALIVE=25"
 Environment="WG_DEFAULT_DNS=10.0.0.45" # server interface IP
 Environment="WG_DEFAULT_ADDRESS=10.41.0.x"
 EnvironmentFile=wg-easy.env
-Volume=./wg-easy_data:/etc/wireguard:Z
+Volume=./data:/etc/wireguard:Z
 AddCapability=NET_ADMIN
 AddCapability=NET_RAW
 Sysctl=net.ipv4.conf.all.src_valid_mark=1

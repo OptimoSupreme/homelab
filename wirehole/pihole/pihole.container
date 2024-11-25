@@ -12,8 +12,8 @@ Environment="TZ=America/New_York"
 Environment="FTLCONF_REPLY_ADDR4=0.0.0.0"
 Environment=PIHOLE_DNS_=localhost:5353
 EnvironmentFile=pihole.env
-Volume=./pihole_data/pihole:/etc/pihole:Z
-Volume=./pihole_data/dnsmasq.d:/etc/dnsmasq.d:Z
+Volume=./data/pihole_config:/etc/pihole:Z
+Volume=./data/dnsmasq.d:/etc/dnsmasq.d:Z
 AutoUpdate=registry
 
 [Service]
