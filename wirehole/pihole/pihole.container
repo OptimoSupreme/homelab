@@ -8,6 +8,7 @@ DNS=127.0.0.1
 Environment="TZ=America/New_York"
 Environment="FTLCONF_REPLY_ADDR4=0.0.0.0"
 Environment=PIHOLE_DNS_=127.0.0.1#5353
+Environment=FTLCONF_BLOCK_ICLOUD_PR=false
 EnvironmentFile=pihole.env
 Volume=./data/pihole_config:/etc/pihole:Z
 Volume=./data/dnsmasq.d:/etc/dnsmasq.d:Z
