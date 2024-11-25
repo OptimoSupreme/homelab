@@ -4,13 +4,10 @@ Description=Pihole instance
 [Container]
 Image=docker.io/pihole/pihole:latest
 Pod=wirehole.pod
-DNS=localhost
-PublishPort=8081:80/tcp
-PublishPort=10.0.0.45:53:53/tcp # server interface IP
-PublishPort=10.0.0.45:53:53/udp # server interface IP
+DNS=127.0.0.1
 Environment="TZ=America/New_York"
 Environment="FTLCONF_REPLY_ADDR4=0.0.0.0"
-Environment=PIHOLE_DNS_=localhost:5353
+Environment=PIHOLE_DNS_=127.0.0.1:5353
 EnvironmentFile=pihole.env
 Volume=./data/pihole_config:/etc/pihole:Z
 Volume=./data/dnsmasq.d:/etc/dnsmasq.d:Z

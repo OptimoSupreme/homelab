@@ -2,7 +2,14 @@
 Description=Wirehole pod
 
 [Pod]
-Hostname=wirehole
+# pihole ports
+PublishPort=8081:80/tcp
+PublishPort=10.0.0.45:53:53/tcp
+PublishPort=10.0.0.45:53:53/udp
+
+# wg-easy ports
+PublishPort=8082:8082/tcp
+PublishPort=443:443/udp
 
 [Install]
 WantedBy=default.target
