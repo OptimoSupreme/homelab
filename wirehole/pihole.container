@@ -1,11 +1,10 @@
 [Unit]
-Description=Pihole instance.
+Description=Pihole instance
 
 [Container]
 Image=docker.io/pihole/pihole:latest
-Network=pihole.network
-IP=10.40.0.3
-DNS=10.40.0.3
+Pod=wirehole.pod
+DNS=localhost:5353
 PublishPort=8081:80/tcp
 PublishPort=10.0.0.45:53:53/tcp
 PublishPort=10.0.0.45:53:53/udp
@@ -19,6 +18,3 @@ AutoUpdate=registry
 
 [Service]
 Restart=always
-
-[Install]
-WantedBy=multi-user.target

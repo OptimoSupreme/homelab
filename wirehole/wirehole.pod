@@ -1,0 +1,8 @@
+[Unit]
+Description=Wirehole pod
+
+[Pod]
+Hostname=wirehole
+
+[Install]
+WantedBy=default.target
