@@ -4,14 +4,14 @@ Description=wg-easy instance.
 [Container]
 Image=ghcr.io/wg-easy/wg-easy
 Pod=wirehole.pod
-DNS=10.0.0.45
+DNS=localhost
 PublishPort=8082:8082/tcp
 PublishPort=443:443/udp
 Environment="LANG=en"
 Environment="PORT=8082"
 Environment="WG_PORT=443"
 Environment="WG_PERSISTENT_KEEPALIVE=25"
-Environment="WG_DEFAULT_DNS=10.0.0.45"
+Environment="WG_DEFAULT_DNS=10.0.0.45" # server interface IP
 Environment="WG_DEFAULT_ADDRESS=10.41.0.x"
 EnvironmentFile=wg-easy.env
 Volume=./wg-easy_data:/etc/wireguard:Z
