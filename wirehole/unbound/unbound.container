@@ -4,7 +4,7 @@ Description=Unbound DNS
 [Container]
 Image=docker.io/klutchell/unbound:main
 Pod=wirehole.pod
-Volume=./unbound.conf:/etc/unbound:Z
+Volume=./unbound.conf:/etc/unbound/custom.conf.d:Z
 AutoUpdate=registry
 
 [Service]
