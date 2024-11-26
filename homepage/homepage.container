@@ -1,0 +1,12 @@
+[Unit]
+Description=Homepage instance
+
+[Container]
+Image=ghcr.io/gethomepage/homepage:latest
+PublishPort=8080:3000/tcp
+Volume=./config:/app/config:Z
+Volume=./images:/app/public/images:Z
+AutoUpdate=registry
+
+[Service]
+Restart=always
